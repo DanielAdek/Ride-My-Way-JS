@@ -4,7 +4,16 @@
   "description": "Connect drivers and passengers together",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production babel-node server/app",
+    "start:dev": "nodemon --exec babel-node server/app",
+    "lint": "eslint --fix server/",
+    "migrate": "sequelize db:migrate",
+    "migrate:undo:all": "sequelize db:migrate:undo:all",
+    "test:dev": "npm run migrate:undo:all && npm run migrate && nyc --reporter=html --reporter=text mocha server/src/test --compilers js:babel-core/register --timeout 50000ms --exit",
+    "test": "npm run test:dev",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",
