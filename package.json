@@ -9,6 +9,8 @@
     "lint": "eslint --fix server/",
     "migrate": "npx sequelize db:migrate",
     "migrate:undo:all": "npx sequelize db:migrate:undo:all",
+    "seed": "npx sequelize db:seed:all",
+    "seed:undo:all": "npx sequelize db:seed:undo:all",
     "test:dev": "npm run migrate:undo:all && npm run migrate && nyc --reporter=html --reporter=text mocha server/src/test --compilers js:babel-core/register --timeout 50000ms --exit",
     "test": "npm run test:dev",
     "coverage": "nyc report --reporter=text-lcov | coveralls",

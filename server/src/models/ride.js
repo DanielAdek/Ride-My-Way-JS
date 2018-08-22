@@ -9,7 +9,6 @@ export default (sequelize, DataTypes) => {
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      autoIncrement: true,
     },
     driver: {
       type: DataTypes.STRING,
@@ -47,7 +46,7 @@ export default (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     });
     Ride.hasMany(models.Request, {
-      foreignKey: 'rideID',
+      foreignKey: 'rideId',
       onDelete: 'CASCADE'
     });
   };

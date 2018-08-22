@@ -9,12 +9,10 @@ export default (sequelize, DataTypes) => {
     rideId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      autoIncrement: true,
     },
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      autoIncrement: true,
     },
     passenger:{
       type: DataTypes.STRING,
