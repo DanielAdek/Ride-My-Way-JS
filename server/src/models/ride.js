@@ -26,6 +26,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    time: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     seats: {
       type: DataTypes.INTEGER,
       allowNull: false
