@@ -41,7 +41,6 @@ export default class Users {
     const {
       fullName, userName, email
     } = req.body;
-
     User
       .create({ fullName, userName, email, password })
       .then((newUser) => {

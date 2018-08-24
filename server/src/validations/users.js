@@ -7,7 +7,7 @@ export default {
       .withMessage('Enter your full name please')
       .matches(/^[a-zA-Z ]+$/)
       .withMessage('Names should be letters only'),
-    check('username')
+    check('userName')
       .trim().not().isEmpty()
       .withMessage('Please fill the field for username')
       .matches(/^[a-zA-Z ]+$/)
