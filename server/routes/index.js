@@ -1,7 +1,7 @@
 import express from 'express';
 import usersController from '../src/controllers/userController';
 import rides from '../src/controllers/rideController';
-// import request from '../src/controllers/requestController';
+import request from '../src/controllers/requestController';
 import auth from '../src/middleware/auth';
 // import checkInput from '../src/validations/rides';
 // import validateInput from '../src/validations/users';
@@ -38,20 +38,34 @@ router.get(
     '/user/rides', verifyUser,
     rides.getOneUserRides
 );
-// router.get(
-//     '/user/requests', verifyUser,
-//     request.getOneUserRequests
-// );
 
-// router.get(
-//     '/user/passengers/requests', verifyUser,
-//     request.getAllRequestsToARide
-// );
+router.post(
+    '/rides/:rideId/request', verifyUser,
+    request.requestRide
+);
 
-// router.get('/rides', searchRide, rides.getAllRides);
+router.get(
+    '/users/rides/:rideId/requests', verifyUser,
+    request.getRequests
+);
+
+router.get(
+    '/user/requests', verifyUser,
+    request.getOneUserRequests
+);
+
+router.get(
+    '/user/passengers/requests', verifyUser,
+    request.getAllRequestsToARide
+);
+
+router.get('/rides', rides.getAllRides);
 
 router.get('/rides/:rideId', rides.getSingleRide);
 
-// router.get('/users/rides/:rideId/requests', verifyUser, request.getRequests);
+router.put(
+    '/users/rides/:rideId/requests/:requestId',
+    verifyUser, request.updateRequest
+);
 
 export default router;

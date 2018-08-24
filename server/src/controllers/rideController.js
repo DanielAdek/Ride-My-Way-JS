@@ -38,7 +38,7 @@ export default class Rides {
   static getOneUserRides(req, res) {
     const { userId } = req.decoded;
     Ride
-    .findOne({ where: { userId }})
+    .findAll({ where: { userId }})
       .then((rides) => {
         if (rides.length < 1) {
           return res.status(200).json({
@@ -69,7 +69,7 @@ export default class Rides {
     Ride
     .findOne({ where: {rideId} })
       .then((ride) => {
-        if (ride.length < 1) {
+        if (!ride) {
           return res.status(404).json({
             error: 'Oops Sorry!',
             message: 'Cannot find any ride from this driver'

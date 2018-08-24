@@ -30,6 +30,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    time:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     date:{
       type: DataTypes.STRING,
       allowNull: false
